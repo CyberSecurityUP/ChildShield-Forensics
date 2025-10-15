@@ -11,7 +11,8 @@ from PyQt5.QtGui import QDesktopServices, QPixmap
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog,
     QTextEdit, QLineEdit, QLabel, QTabWidget, QTableView, QComboBox, QCheckBox,
-    QMessageBox, QDialog, QFormLayout, QGridLayout, QProgressDialog, QSplashScreen, QProgressBar
+    QMessageBox, QDialog, QFormLayout, QGridLayout, QProgressDialog, QSplashScreen, QProgressBar,
+    QAction
 )
 
 from core.scanner import FileScanner  # uses fallback mime
@@ -92,6 +93,10 @@ class BootDialog(QDialog):
         v.addWidget(self.bar)
         v.addSpacing(8)
         v.addWidget(self.status, alignment=Qt.AlignHCenter)
+        creator = QLabel("Created by Joas A Santos")
+        creator.setStyleSheet("color:gray;font-size:11px;")
+        v.addSpacing(10)
+        v.addWidget(creator, alignment=Qt.AlignHCenter)
         v.addStretch(2)
 
         self._steps = [
@@ -562,6 +567,7 @@ class MainWindow(QMainWindow):
         self._init_reports_tab()
         self._init_plugins_tab()
         self._init_settings_tab()
+        self._init_menu()
         self._request_login_and_legal()
 
     # ---------- Dashboard
@@ -949,6 +955,20 @@ class MainWindow(QMainWindow):
     def open_reports_dir(self):
         from core.reports import REPORTS_DIR
         QDesktopServices.openUrl(QUrl.fromLocalFile(REPORTS_DIR))
+
+    # ---------- Menu / About
+    def _init_menu(self):
+        menubar = self.menuBar()
+        help_menu = menubar.addMenu("Help")
+        about = QAction("About", self)
+        def show_about():
+            QMessageBox.about(self, "About", "<b>Investigator GUI</b><br/>Created by Joas A Santos<br/><br/>For authorized use only. Minimize exposure. No redistribution of illegal content.")
+        about.triggered.connect(show_about)
+        help_menu.addAction(about)
+        # Add permanent credit on status bar
+        credit = QLabel("Created by Joas A Santos")
+        credit.setStyleSheet("color: gray;")
+        self.statusBar().addPermanentWidget(credit)
 
     # ---------- Settings persistence
     def load_settings(self):
