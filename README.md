@@ -100,6 +100,25 @@ python -m gui.main_gui
 6. **Timeline** tab: review and **Export Timeline JSON**.
 7. **Reports** tab: generate **HTML & JSON**.
 
+
+### GUI Screenshots
+
+<img width="501" height="269" alt="image" src="https://github.com/user-attachments/assets/516590a7-77c1-4de9-8e2d-a6fc459ec140" />
+
+A pre-run legal checklist where the operator enters case metadata and must confirm three legal notices before continuing.
+
+<img width="1277" height="899" alt="image" src="https://github.com/user-attachments/assets/6371742f-c93c-40c8-9212-75a8b62b2db5" />
+
+The Dashboard tab showing no scans yet, quick access to the reports folder, and the operator/case in the status bar.
+
+<img width="1283" height="899" alt="image" src="https://github.com/user-attachments/assets/5fe76948-bcb2-4b13-8133-3eae52b82664" />
+
+The Scan tab to choose a target directory and enable advanced triage options (hashsets, YARA, ADS, Windows/Browser artifacts, plugins) before starting.
+
+<img width="1274" height="336" alt="image" src="https://github.com/user-attachments/assets/1afb14a2-766f-4d71-a020-ef4e1c102e7a" />
+
+The Settings tab to configure external-API safeguards and load/test a custom image model (Python module or ONNX).
+
 ### CLI
 
 ```bash
@@ -217,3 +236,4 @@ For best results, build on the target OS and ensure dependencies are installed.
 
 * **ChildShield Forensics** is intended for **lawful investigative use** only.
 * You are responsible for compliance with local laws, policies, and data handling requirements.
+
