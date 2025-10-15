@@ -1,0 +1,25 @@
+# ==== Core ====
+PyQt5>=5.15
+click>=8.1
+Pillow>=10.0
+imagehash>=4.3
+numpy>=1.24
+
+# ==== MIME detection (pick per-OS automatically via markers) ====
+python-magic>=0.4.27; sys_platform != "win32"
+python-magic-bin>=0.4.14; sys_platform == "win32"
+
+# ==== Windows APIs (only on Windows) ====
+pywin32>=306; sys_platform == "win32"
+
+# ==== Forensic artifacts & registries ====
+python-registry>=1.3
+python-evtx>=0.7.4
+
+# ==== Optional analysis (enable if you plan to use them) ====
+onnxruntime>=1.17
+opencv-python>=4.9
+yara-python>=4.3
+
+# ==== Utilities ====
+psutil>=5.9

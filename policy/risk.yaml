@@ -1,0 +1,23 @@
+rules:
+  - id: hash_exact
+    when: "item.hash_sha256 in hashdb_sha256"
+    score: 1.0
+    note: "Exact known-bad SHA-256"
+  - id: phash_near
+    when: "item.phash_dist <= 6"
+    score: 0.85
+    note: "Perceptual near-match"
+  - id: nsfw_high
+    when: "item.nsfw >= 0.85"
+    score: 0.8
+  - id: stego_flag
+    when: "item.stego_flag == True"
+    score: 0.6
+  - id: yara_match
+    when: "len(item.yara_hits) > 0"
+    score: 0.5
+aggregate:
+  method: "max"   # or weighted sum
+thresholds:
+  high: 0.80
+  medium: 0.50
